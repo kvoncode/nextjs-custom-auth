@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
     "mongodb": "^3.5.9",
