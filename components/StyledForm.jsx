@@ -59,7 +59,9 @@ export const StyledForm = styled.form`
 `;
 
 export const StyledHeader = styled.h2`
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.quaternary};
+  font-family: "MuseoModerno", cursive;
+  -webkit-text-stroke: 1px ${(props) => props.theme.colors.secondary};
 `;
 
 // limited area with shadow
