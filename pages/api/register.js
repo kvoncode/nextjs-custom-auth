@@ -1,4 +1,6 @@
 require("dotenv").config();
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 const MongoClient = require("mongodb").MongoClient;
 
 const uri = process.env.DB_URI;
@@ -16,6 +18,8 @@ export default async (req, res) => {
 
     const formData = JSON.parse(req.body);
     // console.log("formData", formData)
+
+    formData.password = await bcrypt.hash(formData.password, saltRounds);
 
     const { email, password } = formData;
     // console.log("password", password)
