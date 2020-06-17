@@ -8,6 +8,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
+    "mongodb": "^3.5.9",
     "next": "^9.4.4",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
