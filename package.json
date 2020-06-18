@@ -10,6 +10,7 @@
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
     "mongodb": "^3.5.9",
+    "mongoose": "^5.9.19",
     "next": "^9.4.4",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
