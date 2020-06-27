@@ -32,7 +32,14 @@ export default async (req, res) => {
           .json({ answer: "Registration success. Written with Mongoose" });
       })
       .catch((err) => {
-        res.status(200).json({ answer: "Error happened", payload: err });
+
+        let resObject = {};
+
+        11000 === err.code
+          ? (resObject = { response: `${email} already registered` })
+          : (resObject = { answer: "Error happened", payload: err });
+
+        res.status(200).json(resObject);
       });
   } catch (err) {
     console.log(err);
