@@ -32,6 +32,7 @@ const Login = () => {
               name="email"
               onChange={formik.handleChange}
               value={formik.values.email}
+              autoComplete="email"
             />
           </StyledLabel>
           <StyledLabel>
@@ -40,6 +41,7 @@ const Login = () => {
               required
               type="password"
               name="password"
+              autoComplete="current-password"
               onChange={formik.handleChange}
               value={formik.values.password}
             />

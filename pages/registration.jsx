@@ -9,7 +9,6 @@ import {
   StyledFormContainer,
 } from "../components/StyledForm";
 
-
 const Registration = () => {
   const formik = useFormik({
     initialValues: {
@@ -44,6 +43,7 @@ const Registration = () => {
               required
               type="text"
               name="name"
+              autoComplete="username"
               onChange={formik.handleChange}
               value={formik.values.name}
             />
@@ -56,6 +56,7 @@ const Registration = () => {
               name="email"
               onChange={formik.handleChange}
               value={formik.values.email}
+              autoComplete="email"
             />
           </StyledLabel>
           <StyledLabel>
@@ -64,6 +65,7 @@ const Registration = () => {
               required
               type="password"
               name="password"
+              autoComplete="new-password"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
