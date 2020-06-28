@@ -1,6 +1,7 @@
 import "normalize.css";
+import Router from "next/router";
 import { Navbar } from "../components/Navbar";
-
+import { Spinner } from "../components/Spinner";
 import App from "next/app";
 import { ThemeProvider } from "styled-components";
 import Head from "next/head";
@@ -15,8 +16,26 @@ const theme = {
 };
 
 export default class CustomApp extends App {
+  constructor(props) {
+    super(props);
+    this.state = { loading: false };
+  }
+
+  componentDidMount() {
+    Router.events.on("routeChangeStart", () => {
+      this.setState({ loading: true });
+    });
+    Router.events.on("routeChangeComplete", () => {
+      this.setState({ loading: false });
+    });
+    Router.events.on("routeChangeError", () => {
+      this.setState({ loading: false });
+    });
+  }
+
   render() {
     const { Component, pageProps } = this.props;
+
     return (
       <>
         <Head>
@@ -32,7 +51,11 @@ export default class CustomApp extends App {
         </Head>
         <ThemeProvider theme={theme}>
           <Navbar></Navbar>
-          <Component {...pageProps} />
+          {this.state.loading ? (
+            <Spinner></Spinner>
+          ) : (
+            <Component {...pageProps} />
+          )}
         </ThemeProvider>
       </>
     );
