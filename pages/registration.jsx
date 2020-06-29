@@ -9,7 +9,12 @@ import {
   StyledFormContainer,
 } from "../components/StyledForm";
 
+import Spinner from "../components/SpinnerSubmit";
+import { useState } from "react";
+
 const Registration = () => {
+  const [loading, setLoading] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -17,6 +22,8 @@ const Registration = () => {
       password: "",
     },
     onSubmit: async (values) => {
+      setLoading(true);
+
       const url = "/api/register";
       const init = {
         method: "POST",
@@ -29,6 +36,7 @@ const Registration = () => {
 
       console.log("Login -> data", data);
 
+      setLoading(false);
       // console.log(values);
     },
   });
@@ -71,7 +79,9 @@ const Registration = () => {
             />
           </StyledLabel>
 
-          <StyledSubmit type="submit">Sign up</StyledSubmit>
+          <StyledSubmit type="submit">
+            {loading ? <Spinner></Spinner> : "Sing up"}
+          </StyledSubmit>
         </StyledForm>
       </StyledFormContainer>
     </StyledFormOutermost>
