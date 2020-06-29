@@ -1,5 +1,7 @@
 import { useFormik } from "formik";
 import {
+  StyledInfoError,
+  StyledInfo,
   StyledInput,
   StyledLabel,
   StyledSubmit,
@@ -23,7 +25,6 @@ const Registration = () => {
       password: "",
     },
     onSubmit: async (values) => {
-      setInfotext("Yello");
       setLoading(true);
 
       const url = "/api/register";
@@ -33,10 +34,14 @@ const Registration = () => {
       };
 
       const res = await fetch(url, init);
+      // console.log(res);
 
       const data = await res.json();
+      // console.log("Login -> data", data);
 
-      console.log("Login -> data", data);
+      data.error
+        ? setInfotext(<StyledInfoError>{data.response}</StyledInfoError>)
+        : setInfotext(<StyledInfo>{data.response}</StyledInfo>);
 
       setLoading(false);
       // console.log(values);

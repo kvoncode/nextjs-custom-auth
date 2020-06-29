@@ -26,18 +26,14 @@ export default async (req, res) => {
 
     await user.save();
 
-    res
-      .status(200)
-      .json({ answer: "Registration success" });
+    res.status(200).json({ error: false, response: "Registration success" });
   } catch (err) {
-
     let resObject = {};
 
     11000 === err.code
-      ? (resObject = { response: `Email already registered` })
-      : (console.log(err));
+      ? (resObject = { error: true, response: `Email already registered` })
+      : console.log(err);
 
     res.status(200).json(resObject);
   }
 };
-

@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const StyledInfoError = styled.div`
+  color: red;
+`;
+export const StyledInfo = styled.div`
+  color: green;
+`;
+
 export const StyledInput = styled.input`
   border: none;
   background: ${(props) => props.theme.colors.tertiary};
