@@ -14,6 +14,7 @@ import { useState } from "react";
 
 const Registration = () => {
   const [loading, setLoading] = useState(false);
+  const [infotext, setInfotext] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -22,6 +23,7 @@ const Registration = () => {
       password: "",
     },
     onSubmit: async (values) => {
+      setInfotext("Yello");
       setLoading(true);
 
       const url = "/api/register";
@@ -82,6 +84,8 @@ const Registration = () => {
           <StyledSubmit type="submit">
             {loading ? <Spinner></Spinner> : "Sing up"}
           </StyledSubmit>
+
+          {infotext}
         </StyledForm>
       </StyledFormContainer>
     </StyledFormOutermost>

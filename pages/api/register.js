@@ -30,7 +30,6 @@ export default async (req, res) => {
       .status(200)
       .json({ answer: "Registration success" });
   } catch (err) {
-    // 
 
     let resObject = {};
 
