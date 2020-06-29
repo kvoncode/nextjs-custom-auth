@@ -24,24 +24,21 @@ export default async (req, res) => {
     // console.log("email", email)
     const user = new User({ name, email, password });
 
-    user
-      .save()
-      .then(() => {
-        res
-          .status(200)
-          .json({ answer: "Registration success. Written with Mongoose" });
-      })
-      .catch((err) => {
+    await user.save();
 
-        let resObject = {};
-
-        11000 === err.code
-          ? (resObject = { response: `${email} already registered` })
-          : (resObject = { answer: "Error happened", payload: err });
-
-        res.status(200).json(resObject);
-      });
+    res
+      .status(200)
+      .json({ answer: "Registration success" });
   } catch (err) {
-    console.log(err);
+    // 
+
+    let resObject = {};
+
+    11000 === err.code
+      ? (resObject = { response: `Email already registered` })
+      : (console.log(err));
+
+    res.status(200).json(resObject);
   }
 };
+
